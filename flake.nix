@@ -20,12 +20,12 @@
     forEachSystem = systems: f: lib.genAttrs systems (system: f system);
     forAllSystems = forEachSystem linux;
   in {
-    nixosModules.zapret = import ./module.nix self;
+    nixosModules.zapret2 = import ./module.nix self;
     packages = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
       zapret = pkgs.stdenv.mkDerivation rec {
-        pname = "zapret";
+        pname = "zapret2";
         version = "";
         src = zapret-src;
         buildPhase = "true";
@@ -47,7 +47,7 @@
           procps
         ];
       };
-      default = self.packages.${system}.zapret;
+      default = self.packages.${system}.zapret2;
     });
   };
 }

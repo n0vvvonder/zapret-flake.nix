@@ -9,7 +9,7 @@ flake: {
   inherit (lib) filterAttrs types mkEnableOption mkOption mkRenamedOptionModule;
   inherit (lib.trivial) pipe;
   inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zapret;
-  cfg = config.services.zapret;
+  cfg = config.services.zapret2;
 in {
   options.services.zapret2 = {
     enable = mkEnableOption ''zapret daemon'';

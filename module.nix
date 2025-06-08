@@ -11,7 +11,7 @@ flake: {
   inherit (flake.packages.${pkgs.stdenv.hostPlatform.system}) zapret;
   cfg = config.services.zapret;
 in {
-  options.services.zapret = {
+  options.services.zapret2 = {
     enable = mkEnableOption ''zapret daemon'';
     config = mkOption {
       type = types.str;
@@ -21,7 +21,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.services.zapret = {
+    systemd.services.zapret2 = {
       description = "zapret daemon";
       path = with pkgs; [nftables curl iptables];
 
